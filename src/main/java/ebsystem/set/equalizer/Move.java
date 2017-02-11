@@ -4,45 +4,54 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BestMove {
+public class Move {
     private final List<Integer> listFrom;
     private final int indexFrom;
     private final List<Integer> listTo;
-    private ListsAfterMove result;
+    private Integer score;
+    private ListsAfterMove listsAfterMove;
 
-    public BestMove(List<Integer> listFrom, int indexFrom, List<Integer> listTo) {
+    public Move(List<Integer> listFrom, int indexFrom, List<Integer> listTo) {
         this.listFrom = listFrom;
         this.indexFrom = indexFrom;
         this.listTo = listTo;
     }
 
-    public int indexFrom() {
+    public int getIndexFrom() {
         return indexFrom;
     }
 
-    public List<Integer> listFrom() {
+    public List<Integer> getListFrom() {
         return listFrom;
     }
 
-    public List<Integer> listTo() {
+    public List<Integer> getListTo() {
         return listTo;
     }
 
-    public ListsAfterMove perform() {
-        if (result == null) {
-            calculateResultOnlyOnce();
+    public ListsAfterMove getListAfterMove() {
+        if (listsAfterMove == null) {
+            performMoveAndCalculateScore();
         }
-        return result;
+        return listsAfterMove;
     }
 
-    private void calculateResultOnlyOnce() {
+    private void performMoveAndCalculateScore() {
         List<Integer> listToAfterMove = new ArrayList<Integer>(listTo);
         List<Integer> listFromAfterMove = new ArrayList<Integer>(listFrom);
+
+        int sumDifferenceBeforeMove = getAbsSumDifference(listFrom, listTo);
 
         listToAfterMove.add(listFrom.get(indexFrom));
         listFromAfterMove.remove(indexFrom);
 
-        result = new ListsAfterMove(Collections.unmodifiableList(listFromAfterMove), Collections.unmodifiableList(listToAfterMove));
+        score = getAbsSumDifference(listFromAfterMove, listToAfterMove) - sumDifferenceBeforeMove;
+
+        listsAfterMove = new ListsAfterMove(Collections.unmodifiableList(listFromAfterMove), Collections.unmodifiableList(listToAfterMove));
+    }
+
+    private int getAbsSumDifference(List<Integer> listTo, List<Integer> listFrom) {
+        return Math.abs(listTo.stream().mapToInt(i -> i.intValue()).sum() - listFrom.stream().mapToInt(i -> i.intValue()).sum());
     }
 
     public static class ListsAfterMove {
@@ -62,4 +71,12 @@ public class BestMove {
             return listTo;
         }
     }
+
+    public int getScore() {
+        if (score == null) {
+            performMoveAndCalculateScore();
+        }
+        return score;
+    }
+
 }

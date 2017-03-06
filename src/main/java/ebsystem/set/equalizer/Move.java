@@ -37,8 +37,8 @@ public class Move {
     }
 
     private void performMoveAndCalculateScore() {
-        List<Integer> listToAfterMove = new ArrayList<Integer>(listTo);
-        List<Integer> listFromAfterMove = new ArrayList<Integer>(listFrom);
+        List<Integer> listToAfterMove = new ArrayList<>(listTo);
+        List<Integer> listFromAfterMove = new ArrayList<>(listFrom);
 
         int sumDifferenceBeforeMove = getAbsSumDifference(listFrom, listTo);
 
@@ -52,6 +52,10 @@ public class Move {
 
     private int getAbsSumDifference(List<Integer> listTo, List<Integer> listFrom) {
         return Math.abs(listTo.stream().mapToInt(i -> i.intValue()).sum() - listFrom.stream().mapToInt(i -> i.intValue()).sum());
+    }
+
+    public boolean isBetterThan(Move other) {
+        return other == null || Math.abs(getScore()) < Math.abs(other.getScore());
     }
 
     public static class ListsAfterMove {

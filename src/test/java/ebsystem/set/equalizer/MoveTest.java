@@ -1,6 +1,5 @@
 package ebsystem.set.equalizer;
 
-import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MoveTest {
 
-    private final List<Integer> listA = ImmutableList.of(3, 12, 5);
-    private final List<Integer> listB = ImmutableList.of(10, 1, 2, 5, 9);
-    private final List<Integer> expectedElementsAfterMove = ImmutableList.of(10, 1, 2, 5, 9, 3);
+    private final List<Integer> listA = List.of(3, 12, 5);
+    private final List<Integer> listB = List.of(10, 1, 2, 5, 9);
+    private final List<Integer> expectedElementsAfterMove = List.of(10, 1, 2, 5, 9, 3);
 
     private Move move;
 

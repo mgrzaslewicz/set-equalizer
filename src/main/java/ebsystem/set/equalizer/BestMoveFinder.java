@@ -2,13 +2,15 @@ package ebsystem.set.equalizer;
 
 import java.util.List;
 
+// TODO rename to ImprovingMove
 public class BestMoveFinder {
 
     public Move findBetween(List<Integer> listA, List<Integer> listB) {
         assert listA.size() > 0;
         assert listB.size() > 0;
 
-        Move bestMove = null;
+        var currentDifference = Math.abs(listA.stream().mapToInt(i -> i.intValue()).sum() - listB.stream().mapToInt(i -> i.intValue()).sum());
+        Move bestMove = new Move(listA, 0, listB);
         for (int listAIndex = 0; listAIndex < listA.size(); listAIndex++) {
             Move currentMove = new Move(listA, listAIndex, listB);
             if (currentMove.isBetterThan(bestMove)) {
@@ -21,7 +23,11 @@ public class BestMoveFinder {
                 bestMove = currentMove;
             }
         }
-        return bestMove;
+        if (bestMove.getDifference() >= currentDifference) {
+            return null;
+        } else {
+            return bestMove;
+        }
     }
 
 }

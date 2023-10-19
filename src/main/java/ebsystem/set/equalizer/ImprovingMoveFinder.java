@@ -2,9 +2,11 @@ package ebsystem.set.equalizer;
 
 import java.util.List;
 
-// TODO rename to ImprovingMove
-public class BestMoveFinder {
+public class ImprovingMoveFinder {
 
+    /**
+     * @return null if no move can improve the difference between the two lists
+     */
     public Move findBetween(List<Integer> listA, List<Integer> listB) {
         assert listA.size() > 0;
         assert listB.size() > 0;

@@ -9,35 +9,35 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
-public class BestMoveFinderTest {
+public class ImprovingMoveFinderTest {
 
     @Test
     public void shouldFindBestMoveBetweenTwoLists() {
         // given
         var listA = List.of(3, 12, 5);
         var listB = List.of(10, 1, 2, 5, 9);
-        var bestMoveFinder = new BestMoveFinder();
+        var finder = new ImprovingMoveFinder();
         // when
-        var bestMove = bestMoveFinder.findBetween(listA, listB);
+        var move = finder.findBetween(listA, listB);
         // then
         SoftAssertions.assertSoftly(it -> {
-            it.assertThat(bestMove.getListFrom()).isSameAs(listB);
-            it.assertThat(bestMove.getIndexFrom()).isEqualTo(2);
-            it.assertThat(bestMove.getListTo()).isSameAs(listA);
-            it.assertThat(bestMove.getDifference()).isEqualTo(3);
+            it.assertThat(move.getListFrom()).isSameAs(listB);
+            it.assertThat(move.getIndexFrom()).isEqualTo(2);
+            it.assertThat(move.getListTo()).isSameAs(listA);
+            it.assertThat(move.getDifference()).isEqualTo(3);
         });
     }
 
     @Test
-    public void shouldFindNoMoveAtAll() {
+    public void shouldFindNoMove() {
         // given
         var listA = List.of(3, 12, 5);
         var listWithEqualSum = List.of(15, 5);
-        var bestMoveFinder = new BestMoveFinder();
+        var finder = new ImprovingMoveFinder();
         // when
-        var bestMove = bestMoveFinder.findBetween(listA, listWithEqualSum);
+        var move = finder.findBetween(listA, listWithEqualSum);
         // then
-        assertThat(bestMove).isNull();
+        assertThat(move).isNull();
     }
 
 }

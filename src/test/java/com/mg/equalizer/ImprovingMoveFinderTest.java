@@ -1,4 +1,4 @@
-package ebsystem.set.equalizer;
+package com.mg.equalizer;
 
 
 import org.assertj.core.api.SoftAssertions;

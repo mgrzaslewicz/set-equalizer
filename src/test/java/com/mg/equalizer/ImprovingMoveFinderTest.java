@@ -16,15 +16,15 @@ public class ImprovingMoveFinderTest {
         // given
         var listA = List.of(3, 12, 5);
         var listB = List.of(10, 1, 2, 5, 9);
-        var finder = new ImprovingMoveFinder();
+        var finder = ImprovingMoveFinder.newBuilder().build();
         // when
         var move = finder.findBetween(listA, listB);
         // then
         SoftAssertions.assertSoftly(it -> {
-            it.assertThat(move.getListFrom()).isSameAs(listB);
-            it.assertThat(move.getIndexFrom()).isEqualTo(2);
-            it.assertThat(move.getListTo()).isSameAs(listA);
-            it.assertThat(move.getDifference()).isEqualTo(3);
+            it.assertThat(move.move().getListFrom()).isSameAs(listB);
+            it.assertThat(move.move().getIndexFrom()).isEqualTo(2);
+            it.assertThat(move.move().getListTo()).isSameAs(listA);
+            it.assertThat(move.score()).isEqualTo(3);
         });
     }
 
@@ -33,7 +33,7 @@ public class ImprovingMoveFinderTest {
         // given
         var listA = List.of(3, 12, 5);
         var listWithEqualSum = List.of(15, 5);
-        var finder = new ImprovingMoveFinder();
+        var finder = ImprovingMoveFinder.newBuilder().build();
         // when
         var move = finder.findBetween(listA, listWithEqualSum);
         // then

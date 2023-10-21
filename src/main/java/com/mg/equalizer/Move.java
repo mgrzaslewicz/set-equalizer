@@ -27,31 +27,9 @@ public class Move {
         return listTo;
     }
 
-    public boolean isBetterThan(Move other) {
-        if (other == null) {
-            throw new IllegalArgumentException("Other move cannot be null");
-        }
-        return getDifference() < other.getDifference();
-    }
-
-    /**
-     * @return minimum is 0, so the lower the better
-     */
-    public int getDifference() {
-        var sumAfterRemoving = listFrom.stream().mapToInt(i -> i.intValue()).sum() - listFrom.get(indexFrom);
-        var sumAfterAdding = listTo.stream().mapToInt(i -> i.intValue()).sum() + listFrom.get(indexFrom);
-        return Math.abs(sumAfterAdding - sumAfterRemoving);
-    }
-
     @Override
     public String toString() {
         return asString;
-    }
-
-    public void accept() {
-        var element = listFrom.get(indexFrom);
-        listFrom.remove(indexFrom);
-        listTo.add(element);
     }
 
     @Override

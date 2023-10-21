@@ -9,8 +9,8 @@ public class BestMoveFinder {
         this.improvingMoveFinder = improvingMoveFinder;
     }
 
-    public Move findBestMove(List<List<Integer>> lists) {
-        Move bestMove = null;
+    public ScoredMove findBestMove(List<List<Integer>> lists) {
+        ScoredMove bestMove = null;
         for (int listAIndex = 0; listAIndex < lists.size(); listAIndex++) {
             for (int listBIndex = 1; listBIndex < lists.size(); listBIndex++) {
                 var listA = lists.get(listAIndex);

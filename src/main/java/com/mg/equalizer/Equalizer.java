@@ -10,9 +10,9 @@ public class Equalizer {
         this.bestMoveFinder = bestMoveFinder;
     }
 
-    public List<Move> equalize(List<List<Integer>> lists) {
-        var result = new ArrayList<Move>();
-        Move bestMove;
+    public List<ScoredMove> equalize(List<List<Integer>> lists) {
+        var result = new ArrayList<ScoredMove>();
+        ScoredMove bestMove;
         while ((bestMove = bestMoveFinder.findBestMove(lists)) != null) {
             bestMove.accept();
             result.add(bestMove);

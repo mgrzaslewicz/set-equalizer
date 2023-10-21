@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SumDifferenceCalculatorTest {
     @Test
-    public void shouldCalculateDifference() {
+    public void shouldCalculateMove() {
         // given
         var listA = List.of(3, 12, 5);
         var listB = List.of(10, 1, 2, 5, 9);
@@ -22,7 +22,7 @@ public class SumDifferenceCalculatorTest {
     }
 
     @Test
-    public void shouldCalculateDifference2() {
+    public void shouldCalculateMove2() {
         // given
         var listA = List.of(3, 12, 5);
         var listB = List.of(10, 1, 2, 5, 9);
@@ -32,5 +32,17 @@ public class SumDifferenceCalculatorTest {
         var scoredMove = calculator.calculate(move);
         // then
         assertThat(scoredMove.score()).isEqualTo(3);
+    }
+
+    @Test
+    public void shouldCalculateLists() {
+        // given
+        var listA = List.of(3, 12, 5);
+        var listB = List.of(10, 1, 2, 5, 9);
+        var calculator = new SumDifferenceCalculator();
+        // when
+        var distance = calculator.calculate(listA, listB);
+        // then
+        assertThat(distance).isEqualTo(7);
     }
 }

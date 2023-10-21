@@ -48,4 +48,9 @@ public class Move {
         return asString;
     }
 
+    public void accept() {
+        var element = listFrom.get(indexFrom);
+        listFrom.remove(indexFrom);
+        listTo.add(element);
+    }
 }

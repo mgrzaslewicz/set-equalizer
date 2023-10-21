@@ -1,4 +1,7 @@
-package com.mg.equalizer;
+package com.mg.equalizer.score;
+
+import com.mg.equalizer.move.Move;
+import com.mg.equalizer.move.ScoredMove;
 
 import java.util.List;
 

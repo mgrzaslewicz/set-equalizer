@@ -1,4 +1,4 @@
-package com.mg.equalizer;
+package com.mg.equalizer.move;
 
 import java.util.List;
 

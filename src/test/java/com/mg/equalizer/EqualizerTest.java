@@ -1,5 +1,7 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.move.Move;
+import com.mg.equalizer.move.ScoredMove;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 

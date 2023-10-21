@@ -1,5 +1,10 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.move.Move;
+import com.mg.equalizer.move.ScoredMove;
+import com.mg.equalizer.score.ScoreCalculator;
+import com.mg.equalizer.score.SumDifferenceCalculator;
+
 import java.util.List;
 
 public class ImprovingMoveFinder {

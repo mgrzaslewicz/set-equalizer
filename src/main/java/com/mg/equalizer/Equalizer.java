@@ -1,5 +1,7 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.move.ScoredMove;
+
 import java.util.ArrayList;
 import java.util.List;
 

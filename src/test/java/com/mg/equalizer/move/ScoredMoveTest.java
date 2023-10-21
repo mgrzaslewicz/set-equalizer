@@ -1,5 +1,7 @@
-package com.mg.equalizer;
+package com.mg.equalizer.move;
 
+import com.mg.equalizer.move.Move;
+import com.mg.equalizer.move.ScoredMove;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

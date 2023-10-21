@@ -1,4 +1,4 @@
-package com.mg.equalizer;
+package com.mg.equalizer.move;
 
 public record ScoredMove(Move move, int score) {
     public static ScoredMove of(Move move, int score) {

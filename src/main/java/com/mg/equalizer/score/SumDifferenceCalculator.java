@@ -5,7 +5,7 @@ import com.mg.equalizer.move.ScoredMove;
 
 import java.util.List;
 
-public class SumDifferenceCalculator implements ScoreCalculator {
+public class SumDifferenceCalculator implements DistanceFromPerfectCalculator {
     @Override
     public int calculate(List<Integer> listA, List<Integer> listB) {
         if (listA == null) {

@@ -2,16 +2,16 @@ package com.mg.equalizer;
 
 import com.mg.equalizer.move.Move;
 import com.mg.equalizer.move.ScoredMove;
-import com.mg.equalizer.score.ScoreCalculator;
+import com.mg.equalizer.score.DistanceFromPerfectCalculator;
 import com.mg.equalizer.score.SumDifferenceCalculator;
 
 import java.util.List;
 
 public class ImprovingMoveFinder {
-    private final ScoreCalculator scoreCalculator;
+    private final DistanceFromPerfectCalculator distanceFromPerfectCalculator;
 
-    private ImprovingMoveFinder(ScoreCalculator scoreCalculator) {
-        this.scoreCalculator = scoreCalculator;
+    private ImprovingMoveFinder(DistanceFromPerfectCalculator distanceFromPerfectCalculator) {
+        this.distanceFromPerfectCalculator = distanceFromPerfectCalculator;
     }
 
 
@@ -22,19 +22,19 @@ public class ImprovingMoveFinder {
         assert listA.size() > 0;
         assert listB.size() > 0;
 
-        var currentScore = scoreCalculator.calculate(listA, listB);
+        var currentScore = distanceFromPerfectCalculator.calculate(listA, listB);
         var initialMove = new Move(listA, 0, listB);
-        ScoredMove bestMove = scoreCalculator.calculate(initialMove);
+        ScoredMove bestMove = distanceFromPerfectCalculator.calculate(initialMove);
         for (int listAIndex = 0; listAIndex < listA.size(); listAIndex++) {
             Move currentMove = new Move(listA, listAIndex, listB);
-            var currentMoveScored = scoreCalculator.calculate(currentMove);
+            var currentMoveScored = distanceFromPerfectCalculator.calculate(currentMove);
             if (currentMoveScored.isBetterThan(bestMove)) {
                 bestMove = currentMoveScored;
             }
         }
         for (int listBIndex = 0; listBIndex < listB.size(); listBIndex++) {
             Move currentMove = new Move(listB, listBIndex, listA);
-            var currentMoveScored = scoreCalculator.calculate(currentMove);
+            var currentMoveScored = distanceFromPerfectCalculator.calculate(currentMove);
             if (currentMoveScored.isBetterThan(bestMove)) {
                 bestMove = currentMoveScored;
             }
@@ -51,15 +51,15 @@ public class ImprovingMoveFinder {
     }
 
     public static class Builder {
-        private ScoreCalculator scoreCalculator = new SumDifferenceCalculator();
+        private DistanceFromPerfectCalculator distanceFromPerfectCalculator = new SumDifferenceCalculator();
 
-        public Builder withScoreCalculator(ScoreCalculator scoreCalculator) {
-            this.scoreCalculator = scoreCalculator;
+        public Builder withScoreCalculator(DistanceFromPerfectCalculator distanceFromPerfectCalculator) {
+            this.distanceFromPerfectCalculator = distanceFromPerfectCalculator;
             return this;
         }
 
         public ImprovingMoveFinder build() {
-            return new ImprovingMoveFinder(scoreCalculator);
+            return new ImprovingMoveFinder(distanceFromPerfectCalculator);
         }
     }
 

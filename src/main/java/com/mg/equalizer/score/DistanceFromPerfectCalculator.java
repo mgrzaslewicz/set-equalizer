@@ -5,10 +5,7 @@ import com.mg.equalizer.move.ScoredMove;
 
 import java.util.List;
 
-/**
- *
- */
-public interface ScoreCalculator {
+public interface DistanceFromPerfectCalculator {
     int calculate(List<Integer> listA, List<Integer> listB);
 
     ScoredMove calculate(Move move);

@@ -12,7 +12,7 @@ public class Move {
         this.listFrom = listFrom;
         this.indexFrom = indexFrom;
         this.listTo = listTo;
-        this.asString = String.format("Move %s from %s to %s", listFrom.get(indexFrom), listFrom, listTo);
+        this.asString = String.format("Move index %s from %s to %s", indexFrom, listFrom, listTo);
     }
 
     public int getIndexFrom() {
@@ -52,5 +52,25 @@ public class Move {
         var element = listFrom.get(indexFrom);
         listFrom.remove(indexFrom);
         listTo.add(element);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Move move = (Move) o;
+
+        if (indexFrom != move.indexFrom) return false;
+        if (!listFrom.equals(move.listFrom)) return false;
+        return listTo.equals(move.listTo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = listFrom.hashCode();
+        result = 31 * result + indexFrom;
+        result = 31 * result + listTo.hashCode();
+        return result;
     }
 }

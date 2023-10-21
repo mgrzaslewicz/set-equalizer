@@ -21,9 +21,9 @@ public class EqualizerTest {
         equalizer.equalize(List.of(list1, list2, list3));
         // then
         SoftAssertions.assertSoftly(it -> {
-            it.assertThat(list1).containsExactly(2, 3, 8, 6, 3);
-            it.assertThat(list2).containsExactly(4, 5, 8, 4, 1);
-            it.assertThat(list3).containsExactly(7, 8, 9);
+            it.assertThat(list1).containsExactly(1, 2, 3, 8, 6); // sum = 20
+            it.assertThat(list2).containsExactly(4, 5, 8, 4, 3); // sum = 24
+            it.assertThat(list3).containsExactly(7, 8, 9); // sum = 24
         });
     }
 
@@ -46,7 +46,7 @@ public class EqualizerTest {
         var list3 = new ArrayList(List.of(7, 8, 9, 3, 4)) {
             @Override
             public String toString() {
-                return "list3:" + super.toString();
+                return "list3" + super.toString();
             }
         }; // sum = 31
         // when
@@ -54,11 +54,9 @@ public class EqualizerTest {
         // then
         SoftAssertions.assertSoftly(it -> {
             it.assertThat(moves).containsExactly(
-                    ScoredMove.of(new Move(list3, 4, list2), 0),
-                    ScoredMove.of(new Move(list2, 2, list1), 1),
-                    ScoredMove.of(new Move(list3, 3, list2), 0),
-                    ScoredMove.of(new Move(list2, 4, list1), 2),
-                    ScoredMove.of(new Move(list1, 0, list2), 0)
+                    ScoredMove.of(new Move(list3, 4, list2), 1),
+                    ScoredMove.of(new Move(list2, 2, list1), 2),
+                    ScoredMove.of(new Move(list3, 3, list2), 2)
             );
         });
 

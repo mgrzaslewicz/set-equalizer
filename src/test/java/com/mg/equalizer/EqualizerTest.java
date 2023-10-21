@@ -13,7 +13,7 @@ public class EqualizerTest {
     @Test
     public void shouldEqualize() {
         // given
-        var equalizer = new Equalizer(new BestMoveFinder(ImprovingMoveFinder.newBuilder().build()));
+        var equalizer = new Equalizer(BestMoveFinder.newBuilder().build());
         var list1 = new ArrayList(List.of(1, 2, 3, 8)); // sum = 14
         var list2 = new ArrayList(List.of(4, 5, 6, 8)); // sum = 23
         var list3 = new ArrayList(List.of(7, 8, 9, 3, 4)); // sum = 31
@@ -30,7 +30,7 @@ public class EqualizerTest {
     @Test
     public void shouldGiveMoves() {
         // given
-        var equalizer = new Equalizer(new BestMoveFinder(ImprovingMoveFinder.newBuilder().build()));
+        var equalizer = new Equalizer(BestMoveFinder.newBuilder().build());
         var list1 = new ArrayList(List.of(1, 2, 3, 8)) {
             @Override
             public String toString() {

@@ -7,7 +7,7 @@ import java.util.List;
 public class BestMoveFinder {
     private final ImprovingMoveFinder improvingMoveFinder;
 
-    public BestMoveFinder(ImprovingMoveFinder improvingMoveFinder) {
+    private BestMoveFinder(ImprovingMoveFinder improvingMoveFinder) {
         this.improvingMoveFinder = improvingMoveFinder;
     }
 
@@ -27,4 +27,20 @@ public class BestMoveFinder {
         return bestMove;
     }
 
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private ImprovingMoveFinder improvingMoveFinder = ImprovingMoveFinder.newBuilder().build();
+
+        public Builder withImprovingMoveFinder(ImprovingMoveFinder improvingMoveFinder) {
+            this.improvingMoveFinder = improvingMoveFinder;
+            return this;
+        }
+
+        public BestMoveFinder build() {
+            return new BestMoveFinder(improvingMoveFinder);
+        }
+    }
 }

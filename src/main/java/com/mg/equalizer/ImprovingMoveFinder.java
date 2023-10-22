@@ -52,6 +52,10 @@ public class ImprovingMoveFinder {
         return new Builder();
     }
 
+    public static ImprovingMoveFinder defaultFinder() {
+        return newBuilder().build();
+    }
+
     public static class Builder {
         private DistanceFromPerfectCalculator distanceFromPerfectCalculator = new MultiCriteriaCalculator(List.of(
                 new SumDifferenceCalculator(),

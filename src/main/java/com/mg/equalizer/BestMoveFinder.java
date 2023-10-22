@@ -31,8 +31,12 @@ public class BestMoveFinder {
         return new Builder();
     }
 
+    public static BestMoveFinder defaultFinder() {
+        return newBuilder().build();
+    }
+
     public static class Builder {
-        private ImprovingMoveFinder improvingMoveFinder = ImprovingMoveFinder.newBuilder().build();
+        private ImprovingMoveFinder improvingMoveFinder = ImprovingMoveFinder.defaultFinder();
 
         public Builder withImprovingMoveFinder(ImprovingMoveFinder improvingMoveFinder) {
             this.improvingMoveFinder = improvingMoveFinder;

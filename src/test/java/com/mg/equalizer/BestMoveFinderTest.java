@@ -13,7 +13,7 @@ public class BestMoveFinderTest {
     @Test
     public void shouldFindBestMove() {
         // given
-        var finder = BestMoveFinder.newBuilder().build();
+        var finder = BestMoveFinder.defaultFinder();
         var list1 = List.of(1, 2, 3); // sum = 6
         var list2 = List.of(4, 5, 6); // sum = 15
         var list3 = List.of(7, 8, 9); // sum = 24

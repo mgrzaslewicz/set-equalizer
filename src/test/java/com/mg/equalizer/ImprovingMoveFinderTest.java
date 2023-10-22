@@ -16,7 +16,7 @@ public class ImprovingMoveFinderTest {
         // given
         var listA = List.of(3, 12, 5);
         var listB = List.of(10, 1, 2, 5, 9);
-        var finder = ImprovingMoveFinder.newBuilder().build();
+        var finder = ImprovingMoveFinder.defaultFinder();
         // when
         var move = finder.findBetween(listA, listB);
         // then
@@ -33,7 +33,7 @@ public class ImprovingMoveFinderTest {
         // given
         var listA = List.of(3, 12, 5);
         var listWithEqualSum = List.of(15, 5);
-        var finder = ImprovingMoveFinder.newBuilder().build();
+        var finder = ImprovingMoveFinder.defaultFinder();
         // when
         var move = finder.findBetween(listA, listWithEqualSum);
         // then

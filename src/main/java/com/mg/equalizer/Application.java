@@ -51,7 +51,7 @@ public class Application {
 
         var lists = loadCsv(inputCsv);
 
-        var equalizer = new Equalizer(BestMoveFinder.newBuilder().build());
+        var equalizer = new Equalizer(BestMoveFinder.defaultFinder());
         var moves = equalizer.equalize(lists);
 
         logger.info("Moves count: {}", moves.size());

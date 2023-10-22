@@ -6,13 +6,11 @@ public class Move {
     private final List<Integer> listFrom;
     private final int indexFrom;
     private final List<Integer> listTo;
-    private final String asString;
 
     public Move(List<Integer> listFrom, int indexFrom, List<Integer> listTo) {
         this.listFrom = listFrom;
         this.indexFrom = indexFrom;
         this.listTo = listTo;
-        this.asString = String.format("Move index %s from %s to %s", indexFrom, listFrom, listTo);
     }
 
     public int getIndexFrom() {
@@ -25,11 +23,6 @@ public class Move {
 
     public List<Integer> getListTo() {
         return listTo;
-    }
-
-    @Override
-    public String toString() {
-        return asString;
     }
 
     @Override

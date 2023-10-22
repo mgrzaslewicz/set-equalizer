@@ -3,6 +3,7 @@ package com.mg.equalizer;
 import org.slf4j.Logger;
 
 import java.io.*;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,9 +52,15 @@ public class Application {
 
         var lists = loadCsv(inputCsv);
 
+        logger.info("Lists count: {}", lists.size());
+        logger.info("Starting equalization...");
+
+        var start = System.currentTimeMillis();
         var equalizer = new Equalizer(BestMoveFinder.defaultFinder());
         var moves = equalizer.equalize(lists);
+        var end = System.currentTimeMillis();
 
+        logger.info("Equalization finished in {}", Duration.ofMillis(end - start));
         logger.info("Moves count: {}", moves.size());
         saveCsv(lists, outputCsv);
     }

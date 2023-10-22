@@ -17,13 +17,21 @@ public class SumDifferenceCalculator implements DistanceFromPerfectCalculator {
         return Math.abs(listA.stream().mapToInt(i -> i.intValue()).sum() - listB.stream().mapToInt(i -> i.intValue()).sum());
     }
 
+    private int sum(List<Integer> list) {
+        int result = 0;
+        for (var i : list) {
+            result += i;
+        }
+        return result;
+    }
+
     @Override
     public ScoredMove calculate(Move move) {
         if (move == null) {
             throw new IllegalArgumentException("move cannot be null");
         }
-        var sumAfterRemoving = move.getListFrom().stream().mapToInt(i -> i.intValue()).sum() - move.getListFrom().get(move.getIndexFrom());
-        var sumAfterAdding = move.getListTo().stream().mapToInt(i -> i.intValue()).sum() + move.getListFrom().get(move.getIndexFrom());
+        var sumAfterRemoving = sum(move.getListFrom()) - move.getListFrom().get(move.getIndexFrom());
+        var sumAfterAdding = sum(move.getListTo()) + move.getListFrom().get(move.getIndexFrom());
         return ScoredMove.of(move, Math.abs(sumAfterAdding - sumAfterRemoving));
     }
 }

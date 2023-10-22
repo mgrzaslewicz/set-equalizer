@@ -14,12 +14,19 @@ public class MultiCriteriaCalculator implements DistanceFromPerfectCalculator {
 
     @Override
     public int calculate(List<Integer> listA, List<Integer> listB) {
-        return calculators.stream().mapToInt(c -> c.calculate(listA, listB)).sum();
+        int sum = 0;
+        for (var calculator : calculators) {
+            sum += calculator.calculate(listA, listB);
+        }
+        return sum;
     }
 
     @Override
     public ScoredMove calculate(Move move) {
-        var scoreSum = calculators.stream().mapToInt(c -> c.calculate(move).score()).sum();
-        return ScoredMove.of(move, scoreSum);
+        var sum = 0;
+        for (var calculator : calculators) {
+            sum += calculator.calculate(move).score();
+        }
+        return ScoredMove.of(move, sum);
     }
 }

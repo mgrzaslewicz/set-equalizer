@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SummingList;
 import com.mg.equalizer.move.ScoredMove;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Equalizer {
         this.bestMoveFinder = bestMoveFinder;
     }
 
-    public List<ScoredMove> equalize(List<List<Integer>> lists) {
+    public List<ScoredMove> equalize(List<SummingList> lists) {
         var result = new ArrayList<ScoredMove>();
         ScoredMove bestMove;
         while ((bestMove = bestMoveFinder.findBestMove(lists)) != null) {

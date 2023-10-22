@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SummingList;
 import com.mg.equalizer.move.Move;
 import com.mg.equalizer.move.ScoredMove;
 import com.mg.equalizer.score.DistanceFromPerfectCalculator;
@@ -20,7 +21,7 @@ public class ImprovingMoveFinder {
     /**
      * @return null if no move can improve the difference between the two lists
      */
-    public ScoredMove findBetween(List<Integer> listA, List<Integer> listB) {
+    public ScoredMove findBetween(SummingList listA, SummingList listB) {
         assert listA.size() > 0;
         assert listB.size() > 0;
 

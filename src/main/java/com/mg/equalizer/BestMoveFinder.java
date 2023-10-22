@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SummingList;
 import com.mg.equalizer.move.ScoredMove;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class BestMoveFinder {
         this.improvingMoveFinder = improvingMoveFinder;
     }
 
-    public ScoredMove findBestMove(List<List<Integer>> lists) {
+    public ScoredMove findBestMove(List<SummingList> lists) {
         ScoredMove bestMove = null;
         for (int listAIndex = 0; listAIndex < lists.size(); listAIndex++) {
             for (int listBIndex = 1; listBIndex < lists.size(); listBIndex++) {

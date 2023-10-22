@@ -1,12 +1,12 @@
 package com.mg.equalizer.move;
 
-import com.mg.equalizer.move.Move;
-import com.mg.equalizer.move.ScoredMove;
+import com.mg.equalizer.list.SumCachingList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mg.equalizer.list.SumCachingList.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ScoredMoveTest {
@@ -14,8 +14,8 @@ public class ScoredMoveTest {
     @Test
     public void shouldBeBetterMove() {
         // given
-        var worseMove = new ScoredMove(new Move(List.of(), 0, List.of()), 2);
-        var betterMove = new ScoredMove(new Move(List.of(), 0, List.of()), 1);
+        var worseMove = new ScoredMove(new Move(emptyList(), 0, emptyList()), 2);
+        var betterMove = new ScoredMove(new Move(emptyList(), 0, emptyList()), 1);
         // when
         var isBetter = betterMove.isBetterThan(worseMove);
         // then
@@ -25,8 +25,8 @@ public class ScoredMoveTest {
     @Test
     public void shouldBeWorseMove() {
         // given
-        var worseMove = new ScoredMove(new Move(List.of(), 0, List.of()), 2);
-        var betterMove = new ScoredMove(new Move(List.of(), 0, List.of()), 1);
+        var worseMove = new ScoredMove(new Move(emptyList(), 0, emptyList()), 2);
+        var betterMove = new ScoredMove(new Move(emptyList(), 0, emptyList()), 1);
         // when
         var isBetter = worseMove.isBetterThan(betterMove);
         // then
@@ -36,8 +36,8 @@ public class ScoredMoveTest {
     @Test
     public void shouldAcceptMove() {
         // given
-        var listA = new ArrayList(List.of(1, 2, 3));
-        var listB = new ArrayList(List.of(4, 5, 6));
+        var listA = SumCachingList.of(new ArrayList<>(List.of(1, 2, 3)));
+        var listB = SumCachingList.of(new ArrayList<>(List.of(4, 5, 6)));
         var move = new ScoredMove(new Move(listA, 0, listB), 1);
         // when
         move.accept();

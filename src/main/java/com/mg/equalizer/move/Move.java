@@ -1,13 +1,14 @@
 package com.mg.equalizer.move;
 
-import java.util.List;
+import com.mg.equalizer.list.SummingList;
+
 
 public class Move {
-    private final List<Integer> listFrom;
+    private final SummingList listFrom;
     private final int indexFrom;
-    private final List<Integer> listTo;
+    private final SummingList listTo;
 
-    public Move(List<Integer> listFrom, int indexFrom, List<Integer> listTo) {
+    public Move(SummingList listFrom, int indexFrom, SummingList listTo) {
         this.listFrom = listFrom;
         this.indexFrom = indexFrom;
         this.listTo = listTo;
@@ -17,11 +18,11 @@ public class Move {
         return indexFrom;
     }
 
-    public List<Integer> getListFrom() {
+    public SummingList getListFrom() {
         return listFrom;
     }
 
-    public List<Integer> getListTo() {
+    public SummingList getListTo() {
         return listTo;
     }
 

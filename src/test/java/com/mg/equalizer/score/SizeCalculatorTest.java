@@ -1,9 +1,8 @@
 package com.mg.equalizer.score;
 
+import com.mg.equalizer.list.SumCachingList;
 import com.mg.equalizer.move.Move;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,8 +11,8 @@ public class SizeCalculatorTest {
     @Test
     public void shouldCalculateMove() {
         // given
-        var listA = List.of(3, 12, 5);
-        var listB = List.of(10, 1, 2, 5, 9);
+        var listA = SumCachingList.of(3, 12, 5);
+        var listB = SumCachingList.of(10, 1, 2, 5, 9);
         var move = new Move(listA, 0, listB);
         var calculator = new SizeCalculator();
         // when
@@ -25,8 +24,8 @@ public class SizeCalculatorTest {
     @Test
     public void shouldCalculateLists() {
         // given
-        var listA = List.of(3, 12, 5);
-        var listB = List.of(10, 1, 2, 5, 9);
+        var listA = SumCachingList.of(3, 12, 5);
+        var listB = SumCachingList.of(10, 1, 2, 5, 9);
         var calculator = new SizeCalculator();
         // when
         var distance = calculator.calculate(listA, listB);

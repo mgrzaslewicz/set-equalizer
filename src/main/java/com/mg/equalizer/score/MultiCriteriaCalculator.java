@@ -1,5 +1,6 @@
 package com.mg.equalizer.score;
 
+import com.mg.equalizer.list.SummingList;
 import com.mg.equalizer.move.Move;
 import com.mg.equalizer.move.ScoredMove;
 
@@ -13,7 +14,7 @@ public class MultiCriteriaCalculator implements DistanceFromPerfectCalculator {
     }
 
     @Override
-    public int calculate(List<Integer> listA, List<Integer> listB) {
+    public int calculate(SummingList listA, SummingList listB) {
         int sum = 0;
         for (var calculator : calculators) {
             sum += calculator.calculate(listA, listB);

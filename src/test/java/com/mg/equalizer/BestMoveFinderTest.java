@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SumCachingList;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +15,9 @@ public class BestMoveFinderTest {
     public void shouldFindBestMove() {
         // given
         var finder = BestMoveFinder.defaultFinder();
-        var list1 = List.of(1, 2, 3); // sum = 6
-        var list2 = List.of(4, 5, 6); // sum = 15
-        var list3 = List.of(7, 8, 9); // sum = 24
+        var list1 = SumCachingList.of(1, 2, 3); // sum = 6
+        var list2 = SumCachingList.of(4, 5, 6); // sum = 15
+        var list3 = SumCachingList.of(7, 8, 9); // sum = 24
         // when
         var bestMove = finder.findBestMove(List.of(list1, list2, list3)); // should give all sums equal to 15
         // then

@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SumCachingList;
 import org.slf4j.Logger;
 
 import java.io.*;
@@ -57,7 +58,7 @@ public class Application {
 
         var start = System.currentTimeMillis();
         var equalizer = new Equalizer(BestMoveFinder.defaultFinder());
-        var moves = equalizer.equalize(lists);
+        var moves = equalizer.equalize(lists.stream().map(SumCachingList::new).collect(Collectors.toList()));
         var end = System.currentTimeMillis();
 
         logger.info("Equalization finished in {}", Duration.ofMillis(end - start));

@@ -1,5 +1,6 @@
 package com.mg.equalizer;
 
+import com.mg.equalizer.list.SumCachingList;
 import com.mg.equalizer.move.Move;
 import com.mg.equalizer.move.ScoredMove;
 import org.assertj.core.api.SoftAssertions;
@@ -14,9 +15,9 @@ public class EqualizerTest {
     public void shouldEqualize() {
         // given
         var equalizer = new Equalizer(BestMoveFinder.defaultFinder());
-        var list1 = new ArrayList(List.of(1, 2, 3, 8)); // sum = 14
-        var list2 = new ArrayList(List.of(4, 5, 6, 8)); // sum = 23
-        var list3 = new ArrayList(List.of(7, 8, 9, 3, 4)); // sum = 31
+        var list1 = SumCachingList.of(1, 2, 3, 8); // sum = 14
+        var list2 = SumCachingList.of(4, 5, 6, 8); // sum = 23
+        var list3 = SumCachingList.of(7, 8, 9, 3, 4); // sum = 31
         // when
         equalizer.equalize(List.of(list1, list2, list3));
         // then
@@ -31,24 +32,24 @@ public class EqualizerTest {
     public void shouldGiveMoves() {
         // given
         var equalizer = new Equalizer(BestMoveFinder.defaultFinder());
-        var list1 = new ArrayList(List.of(1, 2, 3, 8)) {
+        var list1 = SumCachingList.of(new ArrayList(List.of(1, 2, 3, 8)) {
             @Override
             public String toString() {
                 return "list1" + super.toString();
             }
-        }; // sum = 14
-        var list2 = new ArrayList(List.of(4, 5, 6, 8)) {
+        }); // sum = 14
+        var list2 = SumCachingList.of(new ArrayList(List.of(4, 5, 6, 8)) {
             @Override
             public String toString() {
                 return "list2" + super.toString();
             }
-        }; // sum = 23
-        var list3 = new ArrayList(List.of(7, 8, 9, 3, 4)) {
+        }); // sum = 23
+        var list3 = SumCachingList.of(new ArrayList(List.of(7, 8, 9, 3, 4)) {
             @Override
             public String toString() {
                 return "list3" + super.toString();
             }
-        }; // sum = 31
+        }); // sum = 31
         // when
         var moves = equalizer.equalize(List.of(list1, list2, list3));
         // then

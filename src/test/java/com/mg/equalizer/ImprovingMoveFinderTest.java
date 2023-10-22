@@ -1,6 +1,7 @@
 package com.mg.equalizer;
 
 
+import com.mg.equalizer.list.SumCachingList;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +15,8 @@ public class ImprovingMoveFinderTest {
     @Test
     public void shouldFindBestMoveBetweenTwoLists() {
         // given
-        var listA = List.of(3, 12, 5);
-        var listB = List.of(10, 1, 2, 5, 9);
+        var listA = SumCachingList.of(List.of(3, 12, 5));
+        var listB = SumCachingList.of(List.of(10, 1, 2, 5, 9));
         var finder = ImprovingMoveFinder.defaultFinder();
         // when
         var move = finder.findBetween(listA, listB);
@@ -31,8 +32,8 @@ public class ImprovingMoveFinderTest {
     @Test
     public void shouldFindNoMove() {
         // given
-        var listA = List.of(3, 12, 5);
-        var listWithEqualSum = List.of(15, 5);
+        var listA = SumCachingList.of(List.of(3, 12, 5));
+        var listWithEqualSum = SumCachingList.of(List.of(15, 5));
         var finder = ImprovingMoveFinder.defaultFinder();
         // when
         var move = finder.findBetween(listA, listWithEqualSum);

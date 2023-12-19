@@ -4,11 +4,9 @@ import com.mg.equalizer.list.SummingList;
 import com.mg.equalizer.move.Move;
 import com.mg.equalizer.move.ScoredMove;
 
-import java.util.List;
-
 public class SizeCalculator implements DistanceFromPerfectCalculator {
     @Override
-    public int calculate(SummingList listA, SummingList listB) {
+    public int calculateDistance(SummingList listA, SummingList listB) {
         return Math.abs(listA.size() - listB.size());
     }
 

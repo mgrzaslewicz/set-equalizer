@@ -14,10 +14,10 @@ public class MultiCriteriaCalculator implements DistanceFromPerfectCalculator {
     }
 
     @Override
-    public int calculate(SummingList listA, SummingList listB) {
+    public int calculateDistance(SummingList listA, SummingList listB) {
         int sum = 0;
         for (var calculator : calculators) {
-            sum += calculator.calculate(listA, listB);
+            sum += calculator.calculateDistance(listA, listB);
         }
         return sum;
     }
@@ -26,7 +26,7 @@ public class MultiCriteriaCalculator implements DistanceFromPerfectCalculator {
     public ScoredMove calculate(Move move) {
         var sum = 0;
         for (var calculator : calculators) {
-            sum += calculator.calculate(move).score();
+            sum += calculator.calculate(move).distanceFromPerfect();
         }
         return ScoredMove.of(move, sum);
     }

@@ -22,10 +22,10 @@ public class ImprovingMoveFinder {
      * @return null if no move can improve the difference between the two lists
      */
     public ScoredMove findBetween(SummingList listA, SummingList listB) {
-        assert listA.size() > 0;
-        assert listB.size() > 0;
+        assert !listA.isEmpty();
+        assert !listB.isEmpty();
 
-        var currentScore = distanceFromPerfectCalculator.calculate(listA, listB);
+        var distance = distanceFromPerfectCalculator.calculateDistance(listA, listB);
         var initialMove = new Move(listA, 0, listB);
         ScoredMove bestMove = distanceFromPerfectCalculator.calculate(initialMove);
         for (int listAIndex = 0; listAIndex < listA.size(); listAIndex++) {
@@ -42,7 +42,7 @@ public class ImprovingMoveFinder {
                 bestMove = currentMoveScored;
             }
         }
-        if (bestMove.score() >= currentScore) {
+        if (bestMove.distanceFromPerfect() >= distance) {
             return null;
         } else {
             return bestMove;

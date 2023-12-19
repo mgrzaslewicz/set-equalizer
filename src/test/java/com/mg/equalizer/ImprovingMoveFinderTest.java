@@ -25,7 +25,7 @@ public class ImprovingMoveFinderTest {
             it.assertThat(move.move().getListFrom()).isSameAs(listB);
             it.assertThat(move.move().getIndexFrom()).isEqualTo(2);
             it.assertThat(move.move().getListTo()).isSameAs(listA);
-            it.assertThat(move.score()).isEqualTo(3);
+            it.assertThat(move.distanceFromPerfect()).isEqualTo(3);
         });
     }
 

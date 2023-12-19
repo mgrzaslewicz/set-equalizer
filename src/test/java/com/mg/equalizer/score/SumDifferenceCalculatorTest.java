@@ -19,7 +19,7 @@ public class SumDifferenceCalculatorTest {
         // when
         var scoredMove = calculator.calculate(move);
         // then
-        assertThat(scoredMove.score()).isEqualTo(13);
+        assertThat(scoredMove.distanceFromPerfect()).isEqualTo(13);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class SumDifferenceCalculatorTest {
         // when
         var scoredMove = calculator.calculate(move);
         // then
-        assertThat(scoredMove.score()).isEqualTo(3);
+        assertThat(scoredMove.distanceFromPerfect()).isEqualTo(3);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SumDifferenceCalculatorTest {
         var listB = SumCachingList.of(List.of(10, 1, 2, 5, 9));
         var calculator = new SumDifferenceCalculator();
         // when
-        var distance = calculator.calculate(listA, listB);
+        var distance = calculator.calculateDistance(listA, listB);
         // then
         assertThat(distance).isEqualTo(7);
     }

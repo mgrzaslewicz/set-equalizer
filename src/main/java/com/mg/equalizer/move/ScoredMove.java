@@ -1,6 +1,6 @@
 package com.mg.equalizer.move;
 
-public record ScoredMove(Move move, int score) {
+public record ScoredMove(Move move, int distanceFromPerfect) {
     public static ScoredMove of(Move move, int score) {
         return new ScoredMove(move, score);
     }
@@ -9,7 +9,7 @@ public record ScoredMove(Move move, int score) {
         if (other == null) {
             throw new IllegalArgumentException("Other move cannot be null");
         }
-        return this.score < other.score;
+        return this.distanceFromPerfect < other.distanceFromPerfect;
     }
 
     public void accept() {

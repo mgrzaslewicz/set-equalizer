@@ -18,7 +18,7 @@ public class SizeCalculatorTest {
         // when
         var scoredMove = calculator.calculate(move);
         // then
-        assertThat(scoredMove.score()).isEqualTo(4);
+        assertThat(scoredMove.distanceFromPerfect()).isEqualTo(4);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class SizeCalculatorTest {
         var listB = SumCachingList.of(10, 1, 2, 5, 9);
         var calculator = new SizeCalculator();
         // when
-        var distance = calculator.calculate(listA, listB);
+        var distance = calculator.calculateDistance(listA, listB);
         // then
         assertThat(distance).isEqualTo(2);
     }

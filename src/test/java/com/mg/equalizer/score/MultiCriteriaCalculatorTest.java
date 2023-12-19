@@ -19,7 +19,7 @@ public class MultiCriteriaCalculatorTest {
         // when
         var scoredMove = calculator.calculate(move);
         // then
-        assertThat(scoredMove.score()).isEqualTo(17);
+        assertThat(scoredMove.distanceFromPerfect()).isEqualTo(17);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class MultiCriteriaCalculatorTest {
         var listB = SumCachingList.of(10, 1, 2, 5, 9);
         var calculator = new MultiCriteriaCalculator(List.of(new SizeCalculator(), new SumDifferenceCalculator()));
         // when
-        var distance = calculator.calculate(listA, listB);
+        var distance = calculator.calculateDistance(listA, listB);
         // then
         assertThat(distance).isEqualTo(9);
     }

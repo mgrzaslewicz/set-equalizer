@@ -6,7 +6,7 @@ import com.mg.equalizer.move.ScoredMove;
 
 public class SumDifferenceCalculator implements DistanceFromPerfectCalculator {
     @Override
-    public int calculate(SummingList listA, SummingList listB) {
+    public int calculateDistance(SummingList listA, SummingList listB) {
         if (listA == null) {
             throw new IllegalArgumentException("listA cannot be null");
         }

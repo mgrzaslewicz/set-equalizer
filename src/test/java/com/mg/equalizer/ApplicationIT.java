@@ -13,7 +13,7 @@ public class ApplicationIT {
     @Test
     public void shouldProcessCsvFile() throws IOException {
         // given
-        final var actualOutput = "target/set-equalizer-output-" + Instant.now() + ".csv";
+        final var actualOutput = STR."target/set-equalizer-output-\{Instant.now()}.csv";
         var args = new String[]{"src/test/resources/set-equalizer-input.csv", actualOutput};
         // when
         Application.main(args);
